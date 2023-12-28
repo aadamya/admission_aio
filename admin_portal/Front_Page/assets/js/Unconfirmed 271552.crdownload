@@ -1,0 +1,205 @@
+"use strict";
+$(window).on('load', function () {
+    $("#loading").fadeOut(500);
+});
+
+
+$(document).ready(function () {
+    // BANNER MODAL VIDEO
+    $(".tl-testimonial-slider").owlCarousel({
+        center: true,
+        loop: true,
+        margin: 60,
+        autoplay: true,
+        dots: false,
+        nav: true,
+        navText: [`<i class="fa-regular fa-arrow-left"></i>`, `<i class="fa-regular fa-arrow-right"></i>`],
+        responsive: {
+            0: {
+                items: 1,
+            },
+
+            480: {
+                items: 1.3,
+                margin: 10,
+            },
+
+            576: {
+                items: 1.4,
+                margin: 20,
+            },
+            992: {
+                items: 1.8,
+                margin: 30,
+            },
+            1200: {
+                items: 1.9,
+                margin: 40,
+            },
+            1400: {
+                margin: 60,
+                items: 1.9
+            }
+        },
+    });
+
+    //===============//
+    const hamburgerBtn = document.querySelector(".tl-hamburger");
+    if (hamburgerBtn) {
+        hamburgerBtn.addEventListener("click", () => {
+            document.querySelector(".kidba-menu-sidebar").classList.add("sidebar-open")
+        })
+    }
+
+    const sidebarCloseBtn = document.querySelector(".sidebar__close-btn");
+    if (sidebarCloseBtn) {
+        sidebarCloseBtn.addEventListener("click", () => {
+            document.querySelector(".kidba-menu-sidebar").classList.remove("sidebar-open")
+        })
+    }
+    //===============//
+
+    // 
+    $('.tl-nav-menu').meanmenu({
+        meanMenuContainer: '.mobile-menu',
+        meanScreenWidth: "991",
+        meanExpand: ['+'],
+        meanClose: ['-'],
+    });
+
+    //===================== DARK LIGHT TOGGLER
+    $('.tl-dark-light-view-box').on('click', function () {
+        $('body').toggleClass("dark_mode");
+        $('.tl-dark-light-view-box').toggleClass("has-clicked");
+        $('.tl-dark-light-view-toogle-dot').toggleClass("pos-bottom");
+    });
+
+    // ============= INDEX-5 BANNER SLIDER JS START ===============
+    $(".tl-5-banner-slider").owlCarousel({
+        items: 1,
+        loop: true,
+        navText: [`<img src="assets/images/tl-5/banner-slider-arrow.png" alt="arrow">`, `<img src="assets/images/tl-5/banner-slider-arrow-2.png" alt="arrow">`],
+        dots: false,
+        nav: true,
+        autoplay: true,
+
+        responsive: {
+            0: {
+                nav: false,
+            },
+
+            576: {
+                nav: true,
+            }
+        }
+    })
+    // ============= INDEX-5 BANNER SLIDER JS END ===============
+
+    // ============= INDEX-5 FACULTIES SLIDER JS START ===============
+    $(".tl-5-faculties-slider").owlCarousel({
+        items: 4,
+        loop: true,
+        margin: 20,
+        dots: true,
+        autoplay: true,
+
+        responsive: {
+            0: {
+                items: 1,
+            },
+
+            480: {
+                items: 2,
+            },
+
+            768: {
+                items: 3,
+            },
+
+            992: {
+                items: 4,
+                margin: 30,
+            }
+        }
+    })
+    // ============= INDEX-5 FACULTIES SLIDER JS END ===============
+
+
+    // ============= INDEX-5 TESTIMONIAL SLIDER JS START ===============
+    $(".tl-5-testimonial-img-slider").slick({
+        slidesToShow: 1,
+        arrows: false,
+        swipe: false,
+        asNavFor: '.tl-5-testimonial-slider',
+        fade: true,
+        autoplay: true,
+    })
+
+    $(".tl-5-testimonial-slider").slick({
+        slidesToShow: 1,
+        asNavFor: '.tl-5-testimonial-img-slider',
+        appendArrows: $('.tl-5-testimonial-slider-nav'),
+        prevArrow: '<button type="button" class="slick-prev"><i class="fa-light fa-angle-left"></i></button>',
+        nextArrow: '<button type="button" class="slick-next"><i class="fa-light fa-angle-right"></i></button>',
+        autoplay: true,
+    });
+
+    // STICKY HEADER
+    window.addEventListener("scroll", () => {
+        const toFixHeaders = document.querySelectorAll(".to-be-fixed");
+        toFixHeaders.forEach(toFixHeader => {
+            if (window.scrollY > 100) {
+                toFixHeader.classList.add("fixed");
+                document.body.style.paddingTop = toFixHeader.getBoundingClientRect().height + 'px';
+            } else {
+                toFixHeader.classList.remove("fixed");
+                document.body.style.paddingTop = 0;
+            }
+        })
+    });
+
+
+    // ============= INDEX-5 TESTIMONIAL SLIDER JS END ===============
+
+    if (document.querySelector('.tl-11-pop-articles-col')) {
+        mixitup('.tl-11-pop-articles-col');
+    }
+
+    $(".tl-6-members").owlCarousel({
+        items: 5,
+        loop: true,
+        autoplay: true,
+        dots: false,
+        nav: false,
+        navText: [`<i class="fa-regular fa-arrow-left"></i>`, `<i class="fa-regular fa-arrow-right"></i>`],
+
+        responsive: {
+            0: {
+                items: 3,
+            },
+
+            480: {
+                items: 4,
+            },
+
+            992: {
+                nav: true,
+            }
+        }
+    })
+
+    document.querySelectorAll(".tl-4-social").forEach(eachSocial => {
+        $(eachSocial).hover(
+            function () {
+                $(this).find(".tl-4-social-hidden-content").slideDown("medium").show();
+            }
+        )
+        $(eachSocial).mouseleave(function () {
+            $(this).find(".tl-4-social-hidden-content").slideUp("medium");
+        })
+    });
+
+    // INDEX-7 BANNER SLIDER
+    $(".tl-7-banner-slider").owlCarousel({
+        items: 1,
+        animateIn: "fadeI
